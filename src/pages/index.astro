@@ -1,11 +1,147 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Layout SLi Project - Dark Tech Theme
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>SLi Project | Digital & AI Solutions</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	</head>
+	<body>
+		<main>
+			<section class="hero">
+				<div class="overlay"></div>
+				<div class="content">
+					<div class="badge">Innovation & Technology</div>
+					<h1>SLi <span class="text-blue">Project</span></h1>
+					<p class="subtitle">Digitalisasi masa depan dengan kekuatan AI dan Solusi Software Terintegrasi.</p>
+					<div class="cta-buttons">
+						<a href="https://wa.me/+6285172076698" class="btn-primary"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
+						<a href="#services" class="btn-secondary">Layanan Kami</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="services" class="services">
+				<h2 class="section-title">Layanan Unggulan</h2>
+				<div class="grid">
+					<div class="card">
+						<i class="fas fa-microchip"></i>
+						<h3>Automation AI</h3>
+						<p>AI Sales, Manajemen, HRD, Content Creator, hingga Analis data sesuai kebutuhan spesifik bisnis Anda.</p>
+					</div>
+					<div class="card">
+						<i class="fas fa-code"></i>
+						<h3>Web & App Dev</h3>
+						<p>Pembuatan website profesional dan aplikasi custom seperti sistem Kasir, Absensi, dan ERP.</p>
+					</div>
+					<div class="card">
+						<i class="fas fa-tools"></i>
+						<h3>Hardware & Software</h3>
+						<p>Layanan service dan maintenance perangkat keras maupun lunak secara menyeluruh.</p>
+					</div>
+				</div>
+			</section>
+
+			<footer class="footer">
+				<p>Hubungi Kami: <strong>sliproject.id@gmail.com</strong></p>
+				<p>&copy; 2026 SLi Project. All Rights Reserved.</p>
+			</footer>
+
+			<a href="https://wa.me/+6285172076698" class="floating-wa" target="_blank">
+				<i class="fab fa-whatsapp"></i>
+			</a>
+		</main>
+	</body>
+</html>
+
+<style>
+	:root {
+		--bg-dark: #0a0f1a;
+		--blue-primary: #0070f3;
+		--blue-light: #00dfd8;
+		--text-white: #ffffff;
+		--text-gray: #a0aec0;
+	}
+
+	* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+	
+	body { background-color: var(--bg-dark); color: var(--text-white); scroll-behavior: smooth; }
+
+	.hero {
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		background: radial-gradient(circle at center, #1a2a4a 0%, #0a0f1a 100%);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.badge {
+		background: rgba(0, 112, 243, 0.2);
+		color: var(--blue-light);
+		padding: 8px 16px;
+		border-radius: 20px;
+		display: inline-block;
+		margin-bottom: 20px;
+		border: 1px solid var(--blue-primary);
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
+	.text-blue { color: var(--blue-primary); }
+	.subtitle { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 30px; }
+
+	.cta-buttons { display: flex; gap: 15px; justify-content: center; }
+	.btn-primary { background: var(--blue-primary); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+	.btn-secondary { border: 1px solid var(--text-gray); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+	.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,112,243,0.3); }
+
+	.services { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+	.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+	
+	.card {
+		background: rgba(255, 255, 255, 0.03);
+		padding: 40px;
+		border-radius: 15px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		transition: 0.3s;
+	}
+	.card:hover { border-color: var(--blue-primary); background: rgba(0, 112, 243, 0.05); }
+	.card i { font-size: 2.5rem; color: var(--blue-light); margin-bottom: 20px; display: block; }
+	.card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+	.card p { color: var(--text-gray); line-height: 1.6; }
+
+	.footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-gray); }
+
+	.floating-wa {
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		background: #25d366;
+		color: white;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 30px;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+		transition: 0.3s;
+		z-index: 1000;
+	}
+	.floating-wa:hover { transform: scale(1.1); }
+
+	@media (max-width: 768px) {
+		h1 { font-size: 2.5rem; }
+	}
+</style>
