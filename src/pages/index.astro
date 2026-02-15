@@ -1,73 +1,204 @@
----
-// SLi Project - Version with Phone & Envelope Icons
----
-
+<!DOCTYPE html>
 <html lang="id">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>SLi Project | AI & Digital Solutions</title>
-		
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-		
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<main>
-			<section class="hero">
-				<div class="glow"></div>
-				<div class="content">
-					<div class="badge">Future Technology</div>
-					<h1>SLi <span class="blue-text">Project</span></h1>
-					<p class="tagline">Digitalisasi & Otomatisasi AI untuk membantu segala kesulitan perusahaan Anda.</p>
-					
-					<div class="btn-group">
-						<a href="https://wa.me/6285172076698" class="btn-wa" target="_blank">
-							<i class="fas fa-phone"></i> Hubungi WhatsApp
-						</a>
-						<a href="mailto:sliproject.id@gmail.com" class="btn-email">
-							<i class="fas fa-envelope"></i> Kirim Email
-						</a>
-					</div>
-				</div>
-			</section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SLi Project | AI & Digital Solutions</title>
 
-			<section id="services" class="services">
-				<div class="grid">
-					<div class="card">
-						<div class="icon"><i class="fas fa-robot"></i></div>
-						<h3>Automation AI</h3>
-						<p>AI Sales, Manajemen, HRD, dan Admin Sosmed.</p>
-					</div>
-					<div class="card">
-						<div class="icon"><i class="fas fa-laptop-code"></i></div>
-						<h3>Web & App Dev</h3>
-						<p>Pembuatan Website & Aplikasi custom.</p>
-					</div>
-				</div>
-			</section>
+  <!-- Font Awesome v6 -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1yo9G6N1z9Y+0p0z4KJ0s8AjtKoaVHgMHqYjgJv1bLvK+W8sELpAo7P5PLf4KJIp4jOSAm5X6wA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
 
-			<a href="https://wa.me/6285172076698" class="wa-float" target="_blank">
-				<i class="fas fa-phone"></i>
-			</a>
-		</main>
-	</body>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --primary: #3b82f6;
+      --text: #f8fafc;
+      --green: #22c55e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%);
+      padding: 20px;
+    }
+
+    .blue-text {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-size: 56px;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      opacity: 0.8;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-wa, .btn-email {
+      padding: 16px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s ease;
+    }
+
+    .btn-wa {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(34,197,94,0.4);
+    }
+
+    .btn-email {
+      background: white;
+      color: black;
+    }
+
+    .services {
+      padding: 70px 24px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: #0f172a;
+      padding: 36px;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(59,130,246,0.5);
+    }
+
+    .icon {
+      font-size: 42px;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--green);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 26px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div>
+      <div class="badge">Future Technology</div>
+      <h1>SLi <span class="blue-text">Project</span></h1>
+      <p class="tagline">Digitalisasi & Otomatisasi AI untuk membantu segala kesulitan perusahaan Anda.</p>
+
+      <div class="btn-group">
+        <a href="https://wa.me/6285172076698" class="btn-wa" target="_blank">
+          <i class="fa-solid fa-phone"></i>
+          Hubungi WhatsApp
+        </a>
+
+        <a href="mailto:sliproject.id@gmail.com" class="btn-email">
+          <i class="fa-solid fa-envelope"></i>
+          Kirim Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>Automation AI</h3>
+        <p>AI Sales, Manajemen, HRD, dan Admin Sosial Media.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>Web & App Development</h3>
+        <p>Pembuatan Website & Aplikasi custom sesuai kebutuhan bisnis.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <a href="https://wa.me/6285172076698" class="wa-float" target="_blank">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+</body>
 </html>
-
-<style>
-	/* Style sama seperti sebelumnya agar tampilan tetap keren */
-	:root { --bg: #020617; --primary: #3b82f6; --text: #f8fafc; }
-	* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-	body { background-color: var(--bg); color: var(--text); }
-	.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%); }
-	.blue-text { color: var(--primary); text-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-	.btn-group { display: flex; gap: 16px; justify-content: center; }
-	.btn-wa { background: #22c55e; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; }
-	.btn-email { background: white; color: black; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; }
-	.services { padding: 50px 24px; max-width: 1200px; margin: 0 auto; }
-	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-	.card { background: #0f172a; padding: 40px; border-radius: 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); }
-	.icon { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
-	.wa-float { position: fixed; bottom: 32px; right: 32px; background: #22c55e; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; text-decoration: none; }
-</style>
