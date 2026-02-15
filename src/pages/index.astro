@@ -1,5 +1,5 @@
 ---
-// SLi Project - Final dengan Popup Chat AI dan n8n Webhook
+// SLi Project - Final Pro Fix Jarak & Chatbot
 ---
 
 <html lang="id">
@@ -9,7 +9,6 @@
 		<meta name="viewport" content="width=device-width" />
 		<title>SLi Project | AI & Digital Solutions</title>
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 	</head>
 	<body>
@@ -64,12 +63,12 @@
 					<button id="closeChatBtn" class="close-btn">&times;</button>
 				</div>
 				<div class="chat-body" id="chatBody">
-					<div class="message bot-message">Halo! Saya SLi Chatbot. Ada yang bisa saya bantu?</div>
+					<div class="message bot-message">Halo! Ada yang bisa saya bantu?</div>
 				</div>
-				<div class="chat-footer">
-					<input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
-					<button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
-				</div>
+				<form class="chat-footer" id="chatForm">
+					<input type="text" id="chatInput" placeholder="Ketik pesan..." autocomplete="off">
+					<button type="submit" id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+				</form>
 			</div>
 		</main>
 
@@ -77,221 +76,91 @@
 			const openChatBtn = document.getElementById('openChatBtn');
 			const closeChatBtn = document.getElementById('closeChatBtn');
 			const chatPopup = document.getElementById('chatPopup');
+			const chatForm = document.getElementById('chatForm');
 			const chatInput = document.getElementById('chatInput');
-			const sendMessageBtn = document.getElementById('sendMessageBtn');
 			const chatBody = document.getElementById('chatBody');
 
-			// Buka/tutup popup chat
-			openChatBtn.addEventListener('click', () => {
-				chatPopup.classList.add('active');
-			});
+			openChatBtn.addEventListener('click', () => chatPopup.classList.add('active'));
+			closeChatBtn.addEventListener('click', () => chatPopup.classList.remove('active'));
 
-			closeChatBtn.addEventListener('click', () => {
-				chatPopup.classList.remove('active');
-			});
+			chatForm.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				const msg = chatInput.value.trim();
+				if (!msg) return;
 
-			// Fungsi untuk mengirim pesan
-			async function sendMessage() {
-				const userMessage = chatInput.value.trim();
-				if (userMessage === '') return;
-
-				// Tampilkan pesan pengguna
-				const userMsgDiv = document.createElement('div');
-				userMsgDiv.classList.add('message', 'user-message');
-				userMsgDiv.textContent = userMessage;
-				chatBody.appendChild(userMsgDiv);
+				// User Message
+				appendMessage(msg, 'user-message');
 				chatInput.value = '';
-				chatBody.scrollTop = chatBody.scrollHeight; // Scroll ke bawah
 
-				// Kirim pesan ke webhook n8n
 				try {
 					const response = await fetch('https://n8n.aleshatour.my.id/webhook/botwebsite', {
 						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify({ message: userMessage }),
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ message: msg }),
 					});
+					
+					if(!response.ok) throw new Error('Network response was not ok');
+					
 					const data = await response.json();
-
-					// Tampilkan balasan dari n8n (contoh: balasan dari AI Anda)
-					const botMsgDiv = document.createElement('div');
-					botMsgDiv.classList.add('message', 'bot-message');
-					// Pastikan n8n Anda mengembalikan JSON dengan key 'reply' atau 'message'
-					botMsgDiv.textContent = data.reply || data.message || "Maaf, saya tidak mengerti."; 
-					chatBody.appendChild(botMsgDiv);
-					chatBody.scrollTop = chatBody.scrollHeight; // Scroll ke bawah
-
+					appendMessage(data.reply || data.message || "Pesan terkirim ke sistem.", 'bot-message');
 				} catch (error) {
-					console.error('Error sending message to n8n:', error);
-					const errorMsgDiv = document.createElement('div');
-					errorMsgDiv.classList.add('message', 'bot-message', 'error-message');
-					errorMsgDiv.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
-					chatBody.appendChild(errorMsgDiv);
-					chatBody.scrollTop = chatBody.scrollHeight;
-				}
-			}
-
-			sendMessageBtn.addEventListener('click', sendMessage);
-			chatInput.addEventListener('keypress', (e) => {
-				if (e.key === 'Enter') {
-					sendMessage();
+					appendMessage("Maaf, koneksi ke asisten AI terputus.", 'bot-message');
 				}
 			});
+
+			function appendMessage(text, className) {
+				const div = document.createElement('div');
+				div.classList.add('message', className);
+				div.textContent = text;
+				chatBody.appendChild(div);
+				chatBody.scrollTop = chatBody.scrollHeight;
+			}
 		</script>
 	</body>
 </html>
 
 <style>
-	:root { --bg: #020617; --primary: #3b82f6; --text: #f8fafc; --chat-bg: #1f2937; --chat-bubble-bot: #4a5568; --chat-bubble-user: #3b82f6; }
+	:root { --bg: #020617; --primary: #3b82f6; --text: #f8fafc; --chat-bg: #1f2937; }
 	* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-	body { background-color: var(--bg); color: var(--text); }
-	.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%); }
+	body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+	
+	.hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; }
+	
+	/* JARAK TAGLINE DIPERBAIKI */
+	.tagline { 
+		color: #94a3b8; 
+		max-width: 600px; 
+		margin: 35px auto 60px; /* Jarak atas 35px, jarak bawah 60px agar tidak mepet tombol */
+		line-height: 1.8; 
+		font-size: 1.1rem; 
+	}
+
+	.btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 	.blue-text { color: var(--primary); text-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-	.btn-group { display: flex; gap: 16px; justify-content: center; }
+	
 	.btn-wa { background: #22c55e; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
 	.btn-email { background: white; color: black; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-	.btn-wa:hover, .btn-email:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-	.services { padding: 50px 24px; max-width: 1200px; margin: 0 auto; }
+	.btn-wa:hover, .btn-email:hover { transform: translateY(-5px); }
+
+	.services { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
 	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-	.card { background: #0f172a; padding: 40px; border-radius: 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); }
-	.icon-box { margin-bottom: 20px; display: flex; justify-content: center; }
-	
-	/* Style untuk Tombol Floating Admin */
-	.admin-float {
-		position: fixed;
-		bottom: 30px;
-		right: 30px;
-		background: var(--primary);
-		padding: 12px 24px;
-		border-radius: 50px;
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		color: white;
-		border: none;
-		cursor: pointer;
-		font-weight: bold;
-		box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-		z-index: 1000;
-		transition: 0.3s;
-	}
-	.admin-float:hover { transform: translateY(-5px); background: #2563eb; }
+	.card { background: #0f172a; padding: 40px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+
+	/* POPUP CHAT */
+	.admin-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); padding: 12px 24px; border-radius: 50px; color: white; border: none; cursor: pointer; font-weight: bold; z-index: 1000; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+	.chat-popup { position: fixed; bottom: 95px; right: 30px; width: 340px; height: 450px; background: var(--chat-bg); border-radius: 15px; display: flex; flex-direction: column; transform: scale(0); transform-origin: bottom right; transition: 0.3s; z-index: 999; border: 1px solid #334155; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+	.chat-popup.active { transform: scale(1); }
+	.chat-header { background: var(--primary); padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+	.chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #111827; }
+	.message { padding: 10px 14px; border-radius: 12px; max-width: 80%; font-size: 0.9rem; line-height: 1.4; }
+	.bot-message { background: #374151; color: white; align-self: flex-start; }
+	.user-message { background: var(--primary); color: white; align-self: flex-end; }
+	.chat-footer { padding: 10px; display: flex; gap: 8px; border-top: 1px solid #334155; }
+	.chat-footer input { flex: 1; padding: 10px; border-radius: 8px; border: none; background: #0f172a; color: white; outline: none; }
+	.chat-footer button { background: var(--primary); border: none; color: white; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
 
 	@media (max-width: 480px) {
 		.admin-float span { display: none; }
-		.admin-float { padding: 15px; border-radius: 50%; }
-	}
-
-	/* Style untuk Popup Chatbot */
-	.chat-popup {
-		position: fixed;
-		bottom: 90px; /* Di atas tombol admin-float */
-		right: 30px;
-		width: 350px;
-		height: 450px;
-		background-color: var(--chat-bg);
-		border-radius: 15px;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-		display: flex;
-		flex-direction: column;
-		overflow: hidden;
-		z-index: 999;
-		transform: scale(0);
-		transform-origin: bottom right;
-		transition: transform 0.3s ease-out;
-		border: 1px solid #334155;
-	}
-	.chat-popup.active {
-		transform: scale(1);
-	}
-	.chat-header {
-		background-color: var(--primary);
-		color: white;
-		padding: 15px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-weight: bold;
-	}
-	.chat-header h3 { margin: 0; font-size: 1.1rem; }
-	.close-btn {
-		background: none;
-		border: none;
-		color: white;
-		font-size: 1.5rem;
-		cursor: pointer;
-		line-height: 1;
-	}
-	.chat-body {
-		flex-grow: 1;
-		padding: 15px;
-		overflow-y: auto;
-		background-color: #2a3547;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-	.message {
-		max-width: 80%;
-		padding: 10px 15px;
-		border-radius: 15px;
-		font-size: 0.95rem;
-		line-height: 1.5;
-	}
-	.bot-message {
-		background-color: var(--chat-bubble-bot);
-		color: white;
-		align-self: flex-start;
-		border-bottom-left-radius: 5px;
-	}
-	.user-message {
-		background-color: var(--chat-bubble-user);
-		color: white;
-		align-self: flex-end;
-		border-bottom-right-radius: 5px;
-	}
-	.chat-footer {
-		display: flex;
-		padding: 10px;
-		background-color: var(--chat-bg);
-		border-top: 1px solid #334155;
-	}
-	.chat-footer input {
-		flex-grow: 1;
-		padding: 10px;
-		border: 1px solid #4a5568;
-		border-radius: 20px;
-		background-color: #1a202c;
-		color: white;
-		font-size: 0.95rem;
-		outline: none;
-	}
-	.chat-footer input::placeholder { color: #a0aec0; }
-	.chat-footer button {
-		background-color: var(--primary);
-		color: white;
-		border: none;
-		border-radius: 50%;
-		width: 40px;
-		height: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-left: 10px;
-		cursor: pointer;
-		transition: background-color 0.2s;
-	}
-	.chat-footer button:hover { background-color: #2563eb; }
-
-	/* Responsif untuk ukuran layar kecil */
-	@media (max-width: 600px) {
-		.chat-popup {
-			width: calc(100% - 60px); /* Lebar penuh minus padding */
-			right: 30px;
-			left: 30px;
-			bottom: 90px;
-			height: calc(100% - 120px); /* Hampir penuh layar */
-		}
+		.chat-popup { width: calc(100% - 40px); bottom: 85px; right: 20px; }
 	}
 </style>
