@@ -1,5 +1,5 @@
 ---
-// Layout SLi Project - Dark Tech Theme
+// Layout SLi Project - High Tech Design
 ---
 
 <html lang="id">
@@ -7,48 +7,57 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<title>SLi Project | Digital & AI Solutions</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<title>SLi Project | AI & Digital Solution</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	</head>
 	<body>
 		<main>
 			<section class="hero">
-				<div class="overlay"></div>
 				<div class="content">
-					<div class="badge">Innovation & Technology</div>
-					<h1>SLi <span class="text-blue">Project</span></h1>
-					<p class="subtitle">Digitalisasi masa depan dengan kekuatan AI dan Solusi Software Terintegrasi.</p>
-					<div class="cta-buttons">
-						<a href="https://wa.me/+6285172076698" class="btn-primary"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
-						<a href="#services" class="btn-secondary">Layanan Kami</a>
+					<div class="tech-badge"><i class="fas fa-bolt"></i> Future Tech Ready</div>
+					<h1>SLi <span class="blue-glow">Project</span></h1>
+					<p class="tagline">Digitalisasi & Otomatisasi AI untuk Segala Kesulitan Perusahaan Anda.</p>
+					<div class="btn-group">
+						<a href="https://wa.me/+6285172076698" class="btn-wa">
+							<i class="fab fa-whatsapp"></i> Hubungi Kami
+						</a>
+						<a href="#layanan" class="btn-outline">Lihat Solusi</a>
 					</div>
 				</div>
 			</section>
 
-			<section id="services" class="services">
-				<h2 class="section-title">Layanan Unggulan</h2>
+			<section id="layanan" class="services">
+				<h2 class="title"><i class="fas fa-layer-group"></i> Solusi Digital Kami</h2>
 				<div class="grid">
 					<div class="card">
-						<i class="fas fa-microchip"></i>
+						<div class="icon-box"><i class="fas fa-robot"></i></div>
 						<h3>Automation AI</h3>
-						<p>AI Sales, Manajemen, HRD, Content Creator, hingga Analis data sesuai kebutuhan spesifik bisnis Anda.</p>
+						<p>AI Sales, Manajemen, HRD, Content Creator, Admin Sosmed, hingga Analisis Data Searcher.</p>
 					</div>
+
 					<div class="card">
-						<i class="fas fa-code"></i>
+						<div class="icon-box"><i class="fas fa-code"></i></div>
 						<h3>Web & App Dev</h3>
-						<p>Pembuatan website profesional dan aplikasi custom seperti sistem Kasir, Absensi, dan ERP.</p>
+						<p>Pembuatan Website, Aplikasi Kasir, Absensi, dan sistem Digitalisasi custom lainnya.</p>
 					</div>
+
 					<div class="card">
-						<i class="fas fa-tools"></i>
+						<div class="icon-box"><i class="fas fa-microchip"></i></div>
 						<h3>Hardware & Software</h3>
-						<p>Layanan service dan maintenance perangkat keras maupun lunak secara menyeluruh.</p>
+						<p>Service menyeluruh untuk Perangkat Keras dan Lunak demi kelancaran operasional kerja.</p>
+					</div>
+
+					<div class="card">
+						<div class="icon-box"><i class="fas fa-share-nodes"></i></div>
+						<h3>Social Media AI</h3>
+						<p>Admin otomatis untuk manajemen stok dan postingan konten cerdas.</p>
 					</div>
 				</div>
 			</section>
 
 			<footer class="footer">
-				<p>Hubungi Kami: <strong>sliproject.id@gmail.com</strong></p>
-				<p>&copy; 2026 SLi Project. All Rights Reserved.</p>
+				<p><i class="fas fa-envelope"></i> sliproject.id@gmail.com</p>
+				<p>© 2026 SLi Project - Solusi Digital Terpercaya</p>
 			</footer>
 
 			<a href="https://wa.me/+6285172076698" class="floating-wa" target="_blank">
@@ -60,88 +69,50 @@
 
 <style>
 	:root {
-		--bg-dark: #0a0f1a;
+		--dark: #050a14;
+		--deep-blue: #0a192f;
+		--blue-neon: #00d2ff;
 		--blue-primary: #0070f3;
-		--blue-light: #00dfd8;
-		--text-white: #ffffff;
-		--text-gray: #a0aec0;
+		--white: #e6f1ff;
 	}
 
-	* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-	
-	body { background-color: var(--bg-dark); color: var(--text-white); scroll-behavior: smooth; }
+	* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+	body { background-color: var(--dark); color: var(--white); scroll-behavior: smooth; }
 
+	/* Styling Hero */
 	.hero {
 		height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		background: radial-gradient(circle at center, #1a2a4a 0%, #0a0f1a 100%);
-		position: relative;
-		overflow: hidden;
+		background: linear-gradient(to bottom, #0a192f, #050a14);
+		padding: 20px;
 	}
+	.tech-badge { color: var(--blue-neon); border: 1px solid var(--blue-neon); padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-size: 0.8rem; text-transform: uppercase; }
+	h1 { font-size: 4.5rem; margin-bottom: 15px; }
+	.blue-glow { color: var(--blue-neon); text-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
+	.tagline { font-size: 1.2rem; color: #8892b0; max-width: 700px; margin-bottom: 30px; }
 
-	.badge {
-		background: rgba(0, 112, 243, 0.2);
-		color: var(--blue-light);
-		padding: 8px 16px;
-		border-radius: 20px;
-		display: inline-block;
-		margin-bottom: 20px;
-		border: 1px solid var(--blue-primary);
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-	}
+	/* Tombol */
+	.btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+	.btn-wa { background: #25d366; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+	.btn-outline { border: 1px solid var(--blue-primary); color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; transition: 0.3s; }
+	.btn-wa:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
 
-	h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
-	.text-blue { color: var(--blue-primary); }
-	.subtitle { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 30px; }
-
-	.cta-buttons { display: flex; gap: 15px; justify-content: center; }
-	.btn-primary { background: var(--blue-primary); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-	.btn-secondary { border: 1px solid var(--text-gray); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
-	.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,112,243,0.3); }
-
+	/* Kartu Layanan */
 	.services { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-	.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
-	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-	
-	.card {
-		background: rgba(255, 255, 255, 0.03);
-		padding: 40px;
-		border-radius: 15px;
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		transition: 0.3s;
-	}
-	.card:hover { border-color: var(--blue-primary); background: rgba(0, 112, 243, 0.05); }
-	.card i { font-size: 2.5rem; color: var(--blue-light); margin-bottom: 20px; display: block; }
-	.card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-	.card p { color: var(--text-gray); line-height: 1.6; }
+	.title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; color: var(--blue-neon); }
+	.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+	.card { background: var(--deep-blue); padding: 40px; border-radius: 20px; border: 1px solid #112240; transition: 0.3s; position: relative; }
+	.card:hover { transform: translateY(-10px); border-color: var(--blue-neon); }
+	.icon-box { font-size: 2.5rem; color: var(--blue-neon); margin-bottom: 20px; }
+	.card h3 { margin-bottom: 15px; }
+	.card p { color: #8892b0; line-height: 1.6; font-size: 0.95rem; }
 
-	.footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-gray); }
+	/* Footer */
+	.footer { padding: 50px; text-align: center; border-top: 1px solid #112240; color: #8892b0; }
 
-	.floating-wa {
-		position: fixed;
-		bottom: 30px;
-		right: 30px;
-		background: #25d366;
-		color: white;
-		width: 60px;
-		height: 60px;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 30px;
-		box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-		transition: 0.3s;
-		z-index: 1000;
-	}
-	.floating-wa:hover { transform: scale(1.1); }
-
-	@media (max-width: 768px) {
-		h1 { font-size: 2.5rem; }
-	}
+	/* Floating WA */
+	.floating-wa { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999; text-decoration: none; }
 </style>
