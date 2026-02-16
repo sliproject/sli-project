@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // Sesuaikan dengan nama user GitHub Anda agar link aktif
+  // Gunakan username GitHub Anda (sliproject)
   site: 'https://sliproject.github.io', 
   base: '/sli-project', 
 });
