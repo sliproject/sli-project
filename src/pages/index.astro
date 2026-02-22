@@ -17,7 +17,6 @@
         body { background: #ffffff; color: var(--dark); overflow-x: hidden; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         
-        /* Nav & Text Logo */
         nav { padding: 20px 0; border-bottom: 1px solid #f1f5f9; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 1000; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
         .text-logo { font-size: 26px; font-weight: 800; color: var(--dark); text-decoration: none; letter-spacing: -0.5px; }
@@ -28,14 +27,12 @@
         .btn-nav { background: var(--dark); color: white !important; padding: 10px 24px; border-radius: 8px; transition: background 0.3s; }
         .btn-nav:hover { background: var(--primary); }
 
-        /* Hero Section */
         .hero { padding: 120px 0 100px; text-align: center; background: radial-gradient(circle at top, var(--primary-light) 0%, #ffffff 100%); }
         .badge { background: white; border: 1px solid #e2e8f0; color: var(--primary); padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; display: inline-block; letter-spacing: 1px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         h1 { font-size: 52px; font-weight: 800; line-height: 1.15; margin-bottom: 24px; color: var(--dark); letter-spacing: -1px; }
         .gradient-text { background: linear-gradient(90deg, #0284c7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { font-size: 18px; color: var(--gray); max-width: 700px; margin: 0 auto 40px; }
         
-        /* Buttons */
         .hero-actions { display: flex; gap: 16px; justify-content: center; }
         .btn-primary, .btn-secondary { padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; font-size: 15px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
@@ -43,7 +40,6 @@
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(2, 132, 199, 0.3); }
         .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
 
-        /* Services */
         .services { padding: 100px 0; background: var(--bg-light); }
         .section-title { text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 60px; color: var(--dark); letter-spacing: -0.5px; }
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -53,13 +49,11 @@
         .service-card h3 { margin-bottom: 16px; font-size: 22px; font-weight: 700; }
         .service-card p { color: var(--gray); font-size: 15px; line-height: 1.7; }
 
-        /* Stats */
         .stats { padding: 80px 0; background: var(--dark); color: white; border-top: 4px solid var(--primary); }
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 30px; }
         .stat-box h2 { font-size: 56px; color: var(--primary); margin-bottom: 8px; font-weight: 800; line-height: 1; }
         .stat-box p { font-size: 16px; font-weight: 500; color: #cbd5e1; }
 
-        /* Chatbot */
         .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 1001; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
         .chat-btn:hover { transform: scale(1.05); }
         .chat-window { position: fixed; bottom: 100px; right: 30px; width: 380px; height: 520px; background: white; border-radius: 24px; display: none; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 1001; border: 1px solid #e2e8f0; overflow: hidden; }
@@ -103,14 +97,8 @@
                 <h1>Welcome to the future of <br/><span class="gradient-text">business automation</span></h1>
                 <p class="subtitle">SLi Project delivers cutting-edge digital solutions powered by artificial intelligence and advanced technology.</p>
                 <div class="hero-actions">
-                    <a href="https://wa.me/6285172076698" class="btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Hubungi WhatsApp
-                    </a>
-                    <a href="mailto:sliproject.id@gmail.com?subject=Tanya%20Layanan%20Digital%20SLi%20Project&body=Halo%20Tim%20SLi%20Project,%20saya%20tertarik%20untuk%20berkonsultasi%20mengenai..." class="btn-secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        Kirim Email
-                    </a>
+                    <a href="https://wa.me/6285172076698" class="btn-primary">Hubungi WhatsApp</a>
+                    <a href="mailto:sliproject.id@gmail.com" class="btn-secondary">Kirim Email</a>
                 </div>
             </div>
         </section>
@@ -120,25 +108,19 @@
                 <h2 class="section-title">Comprehensive Digital Solutions</h2>
                 <div class="service-grid">
                     <div class="service-card">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" x2="8" y1="16" y2="16"/><line x1="16" x2="16" y1="16" y2="16"/></svg>
-                        </div>
+                        <div class="icon-wrapper">🚀</div>
                         <h3>AI Sales Automation</h3>
-                        <p>Transform your sales process with intelligent automation that identifies opportunities and closes deals faster.</p>
+                        <p>Transform your sales process with intelligent automation.</p>
                     </div>
                     <div class="service-card">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg>
-                        </div>
+                        <div class="icon-wrapper">🎧</div>
                         <h3>AI Customer Service</h3>
-                        <p>Deliver exceptional 24/7 support with AI-powered assistants that resolve queries instantly.</p>
+                        <p>Deliver exceptional 24/7 support with AI-powered assistants.</p>
                     </div>
                     <div class="service-card">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-                        </div>
+                        <div class="icon-wrapper">📊</div>
                         <h3>Smart Management</h3>
-                        <p>Streamline operations with tools that provide real-time insights and automated decision support.</p>
+                        <p>Streamline operations with automated decision support.</p>
                     </div>
                 </div>
             </div>
@@ -148,22 +130,16 @@
             <div class="container stat-grid">
                 <div class="stat-box"><h2>24/7</h2><p>Always Available</p></div>
                 <div class="stat-box"><h2>100%</h2><p>Customized</p></div>
-                <div class="stat-box)</h2><p>Efficiency Boost</p></div>
+                <div class="stat-box"><h2>10X</h2><p>Efficiency Boost</p></div>
             </div>
         </section>
     </main>
 
     <div id="chat-container">
-        <button id="chat-trigger" class="chat-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-            Chat AI
-        </button>
+        <button id="chat-trigger" class="chat-btn">Chat AI</button>
         <div id="chat-window" class="chat-window">
             <div class="chat-header">
-                <div>
-                    <strong>SLi Chatbot AI</strong>
-                    <span style="display:block; font-size:11px; opacity:0.8;">Online 24/7</span>
-                </div>
+                <div><strong>SLi Chatbot AI</strong></div>
                 <button id="close-chat" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
             </div>
             <div id="chat-messages" class="chat-body">
@@ -171,9 +147,7 @@
             </div>
             <form id="chat-form" class="chat-footer">
                 <input type="text" id="user-input" placeholder="Ketik pesan..." required autocomplete="off" />
-                <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                </button>
+                <button type="submit">➤</button>
             </form>
         </div>
     </div>
@@ -186,7 +160,7 @@
         const chatMessages = document.getElementById('chat-messages');
         const userInput = document.getElementById('user-input');
 
-        // MEMORY: Generate Session ID unik per kunjungan
+        // MEMORY ID
         const sessionId = "sess_" + Math.random().toString(36).substring(7);
 
         chatTrigger.onclick = () => chatWindow.classList.toggle('show');
@@ -194,10 +168,10 @@
 
         chatForm.onsubmit = async (e) => {
             e.preventDefault();
-            const text = userInput.value.trim();
-            if(!text) return;
+            const messageText = userInput.value.trim();
+            if(!messageText) return;
 
-            addMessage(text, 'user');
+            addMessage(messageText, 'user');
             userInput.value = '';
 
             try {
@@ -205,18 +179,17 @@
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ 
-                        message: text,
+                        message: messageText, 
                         chatId: sessionId 
                     })
                 });
                 
                 const data = await response.json();
-                const botReply = data.output || data.reply || data.message || "Terima kasih, pesan Anda diterima.";
+                const botReply = data.reply || data.output || data.message || "Pesan diterima!";
                 addMessage(botReply, 'bot');
 
             } catch (err) {
-                addMessage("Maaf, koneksi ke AI sedang sibuk. Coba lagi nanti.", 'bot');
-                console.error("Error Detail:", err);
+                addMessage("Maaf, koneksi ke AI sedang sibuk.", 'bot');
             }
         };
 
