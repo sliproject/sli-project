@@ -54,32 +54,49 @@
         .stat-box h2 { font-size: 56px; color: var(--primary); margin-bottom: 8px; font-weight: 800; line-height: 1; }
         .stat-box p { font-size: 16px; font-weight: 500; color: #cbd5e1; }
 
-        /* CHATBOT STYLING UPDATED */
+        /* --- BAGIAN CHATBOT YANG DIPERBAIKI --- */
         .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 1001; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
         .chat-btn:hover { transform: scale(1.05); }
         .chat-window { position: fixed; bottom: 100px; right: 30px; width: 380px; height: 520px; background: white; border-radius: 24px; display: none; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 1001; border: 1px solid #e2e8f0; overflow: hidden; }
         .chat-window.show { display: flex; animation: slideUp 0.3s ease; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .chat-header { background: var(--primary); color: white; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #ffffff; display: flex; flex-direction: column; gap: 15px; }
         
-        /* BUBBLE CHAT COLORS */
-        .msg { padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; max-width: 85%; word-wrap: break-word; position: relative; }
-        
-        .msg.user { 
-            align-self: flex-end; 
-            background: var(--primary); 
-            color: white !important; 
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.15);
+        .chat-body { 
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            background: #f8fafc; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
         }
         
+        .msg { 
+            padding: 12px 16px; 
+            border-radius: 18px; 
+            font-size: 14px; 
+            line-height: 1.5; 
+            max-width: 85%; 
+            word-wrap: break-word; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        /* Pesan User: Biru di Kanan */
+        .msg.user { 
+            align-self: flex-end; 
+            background: var(--primary) !important; 
+            color: white !important; 
+            border-bottom-right-radius: 4px; 
+        }
+        
+        /* Pesan Bot: Abu-abu di Kiri */
         .msg.bot { 
             align-self: flex-start; 
-            background: #f1f5f9; 
+            background: #e2e8f0 !important; 
             color: #1e293b !important; 
             border-bottom-left-radius: 4px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
         }
 
         .chat-footer { padding: 16px; border-top: 1px solid #e2e8f0; display: flex; gap: 12px; background: white; }
@@ -174,6 +191,7 @@
         const chatMessages = document.getElementById('chat-messages');
         const userInput = document.getElementById('user-input');
 
+        // Logic Session ID
         if (!localStorage.getItem('chatId')) {
             localStorage.setItem('chatId', "sess_" + Math.random().toString(36).substring(7));
         }
@@ -187,6 +205,7 @@
             const messageText = userInput.value.trim();
             if(!messageText) return;
 
+            // 1. Tampilkan pesan USER (Biru)
             addMessage(messageText, 'user');
             userInput.value = '';
 
@@ -201,20 +220,28 @@
                 });
                 
                 const data = await response.json();
-                const botReply = data.reply || data.output || data.message || "Tim kami akan segera membalas!";
+                
+                // Ambil reply dari webhook
+                const botReply = data.reply || data.output || data.message || "Maaf, server sedang sibuk.";
+                
+                // 2. Tampilkan balasan BOT (Abu-abu)
                 addMessage(botReply, 'bot');
 
             } catch (err) {
                 console.error(err);
-                addMessage("Maaf, koneksi sedang sibuk.", 'bot');
+                addMessage("Maaf, koneksi bermasalah.", 'bot');
             }
         };
 
+        // Fungsi Tambah Pesan yang Membedakan Warna
         function addMessage(text, sender) {
             const div = document.createElement('div');
+            // Menentukan apakah class 'user' atau 'bot'
             div.className = `msg ${sender}`;
             div.textContent = text;
             chatMessages.appendChild(div);
+            
+            // Auto scroll ke bawah
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     </script>
