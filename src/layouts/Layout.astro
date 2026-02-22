@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SLi Project | Your Digital Transformation Partner</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
+    
+    <style is:global>
         :root { 
             --primary: #0284c7; 
             --primary-light: #e0f2fe;
@@ -37,75 +38,69 @@
         .btn-primary, .btn-secondary { padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; font-size: 15px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
         .btn-secondary { background: white; color: var(--dark); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(2, 132, 199, 0.3); }
-        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
 
         .services { padding: 100px 0; background: var(--bg-light); }
         .section-title { text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 60px; color: var(--dark); letter-spacing: -0.5px; }
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; transition: all 0.4s ease; }
-        .service-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .icon-wrapper { width: 60px; height: 60px; background: var(--primary-light); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--primary); }
-        .service-card h3 { margin-bottom: 16px; font-size: 22px; font-weight: 700; }
-        .service-card p { color: var(--gray); font-size: 15px; line-height: 1.7; }
 
         .stats { padding: 80px 0; background: var(--dark); color: white; border-top: 4px solid var(--primary); }
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 30px; }
         .stat-box h2 { font-size: 56px; color: var(--primary); margin-bottom: 8px; font-weight: 800; line-height: 1; }
-        .stat-box p { font-size: 16px; font-weight: 500; color: #cbd5e1; }
 
-        /* --- BAGIAN CHATBOT YANG DIPERBAIKI --- */
-        .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 1001; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-        .chat-btn:hover { transform: scale(1.05); }
+        /* --- CHATBOT UI FIXED --- */
+        .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; cursor: pointer; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 1001; display: flex; align-items: center; gap: 10px; }
         .chat-window { position: fixed; bottom: 100px; right: 30px; width: 380px; height: 520px; background: white; border-radius: 24px; display: none; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 1001; border: 1px solid #e2e8f0; overflow: hidden; }
-        .chat-window.show { display: flex; animation: slideUp 0.3s ease; }
+        .chat-window.show { display: flex !important; animation: slideUp 0.3s ease; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
         .chat-header { background: var(--primary); color: white; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-        
         .chat-body { 
-            flex: 1; 
-            padding: 20px; 
-            overflow-y: auto; 
-            background: #f8fafc; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
+            flex: 1 !important; 
+            padding: 20px !important; 
+            overflow-y: auto !important; 
+            background: #f8fafc !important; 
+            display: flex !important; 
+            flex-direction: column !important; 
+            gap: 15px !important; 
         }
         
+        /* BUBBLE RULES */
         .msg { 
-            padding: 12px 16px; 
-            border-radius: 18px; 
-            font-size: 14px; 
-            line-height: 1.5; 
-            max-width: 85%; 
-            word-wrap: break-word; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 12px 16px !important; 
+            border-radius: 18px !important; 
+            font-size: 14px !important; 
+            line-height: 1.5 !important; 
+            max-width: 85% !important; 
+            word-wrap: break-word !important; 
+            display: block !important;
+            margin-bottom: 5px !important;
         }
         
-        /* Pesan User: Biru di Kanan */
+        /* USER: BIRU & KANAN */
         .msg.user { 
-            align-self: flex-end; 
-            background: var(--primary) !important; 
-            color: white !important; 
-            border-bottom-right-radius: 4px; 
+            align-self: flex-end !important; 
+            margin-left: auto !important;
+            background-color: #0284c7 !important; 
+            color: #ffffff !important; 
+            border-bottom-right-radius: 4px !important; 
         }
         
-        /* Pesan Bot: Abu-abu di Kiri */
+        /* BOT: ABU & KIRI */
         .msg.bot { 
-            align-self: flex-start; 
-            background: #e2e8f0 !important; 
+            align-self: flex-start !important; 
+            margin-right: auto !important;
+            background-color: #e2e8f0 !important; 
             color: #1e293b !important; 
-            border-bottom-left-radius: 4px;
-            border: 1px solid #cbd5e1;
+            border-bottom-left-radius: 4px !important; 
+            border: 1px solid #cbd5e1 !important;
         }
 
         .chat-footer { padding: 16px; border-top: 1px solid #e2e8f0; display: flex; gap: 12px; background: white; }
-        .chat-footer input { flex: 1; border: 1px solid #cbd5e1; padding: 14px; border-radius: 12px; outline: none; font-size: 14px; }
-        .chat-footer button { background: var(--primary); color: white; border: none; width: 50px; border-radius: 12px; cursor: pointer; font-size: 18px; }
+        .chat-footer input { flex: 1; border: 1px solid #cbd5e1; padding: 14px; border-radius: 12px; outline: none; }
+        .chat-footer button { background: var(--primary); color: white; border: none; width: 50px; border-radius: 12px; cursor: pointer; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 40px; }
-            .nav-links { display: none; } 
             .chat-window { width: 90%; right: 5%; bottom: 90px; height: 480px; }
         }
     </style>
@@ -126,42 +121,9 @@
             <div class="container">
                 <span class="badge">Future Technology</span>
                 <h1>Welcome to the future of <br/><span class="gradient-text">business automation</span></h1>
-                <p class="subtitle">SLi Project delivers cutting-edge digital solutions powered by artificial intelligence and advanced technology.</p>
                 <div class="hero-actions">
                     <a href="https://wa.me/6285172076698" class="btn-primary">Hubungi WhatsApp</a>
-                    <a href="mailto:sliproject.id@gmail.com" class="btn-secondary">Kirim Email</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2 class="section-title">Comprehensive Digital Solutions</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <div class="icon-wrapper">🚀</div>
-                        <h3>AI Sales Automation</h3>
-                        <p>Transform your sales process with intelligent automation.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="icon-wrapper">🎧</div>
-                        <h3>AI Customer Service</h3>
-                        <p>Deliver exceptional 24/7 support with AI-powered assistants.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="icon-wrapper">📊</div>
-                        <h3>Smart Management</h3>
-                        <p>Streamline operations with automated decision support.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats">
-            <div class="container stat-grid">
-                <div class="stat-box"><h2>24/7</h2><p>Always Available</p></div>
-                <div class="stat-box"><h2>100%</h2><p>Customized</p></div>
-                <div class="stat-box"><h2>10X</h2><p>Efficiency Boost</p></div>
             </div>
         </section>
     </main>
@@ -183,7 +145,7 @@
         </div>
     </div>
 
-    <script>
+    <script is:inline>
         const chatTrigger = document.getElementById('chat-trigger');
         const chatWindow = document.getElementById('chat-window');
         const closeChat = document.getElementById('close-chat');
@@ -191,57 +153,42 @@
         const chatMessages = document.getElementById('chat-messages');
         const userInput = document.getElementById('user-input');
 
-        // Logic Session ID
-        if (!localStorage.getItem('chatId')) {
-            localStorage.setItem('chatId', "sess_" + Math.random().toString(36).substring(7));
-        }
-        const sessionId = localStorage.getItem('chatId');
+        const sessionId = "sess_" + Math.random().toString(36).substring(7);
 
         chatTrigger.onclick = () => chatWindow.classList.toggle('show');
         closeChat.onclick = () => chatWindow.classList.remove('show');
 
         chatForm.onsubmit = async (e) => {
             e.preventDefault();
-            const messageText = userInput.value.trim();
-            if(!messageText) return;
+            const text = userInput.value.trim();
+            if(!text) return;
 
-            // 1. Tampilkan pesan USER (Biru)
-            addMessage(messageText, 'user');
+            addMessage(text, 'user');
             userInput.value = '';
 
             try {
-                const response = await fetch('https://n8n.aleshatour.my.id/webhook/CHATBOT_SLIPROJECT', {
+                const response = await fetch('https://n8n.aleshatour.my.id/webhook/website', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ 
-                        chatInput: messageText, 
-                        chatId: sessionId 
-                    })
+                    body: JSON.stringify({ message: text, chatId: sessionId })
                 });
                 
                 const data = await response.json();
-                
-                // Ambil reply dari webhook
-                const botReply = data.reply || data.output || data.message || "Maaf, server sedang sibuk.";
-                
-                // 2. Tampilkan balasan BOT (Abu-abu)
+                const botReply = data.reply || data.output || data.message || "Tim kami akan segera membalas!";
                 addMessage(botReply, 'bot');
 
             } catch (err) {
-                console.error(err);
-                addMessage("Maaf, koneksi bermasalah.", 'bot');
+                addMessage("Maaf, koneksi sedang sibuk.", 'bot');
             }
         };
 
-        // Fungsi Tambah Pesan yang Membedakan Warna
         function addMessage(text, sender) {
             const div = document.createElement('div');
-            // Menentukan apakah class 'user' atau 'bot'
-            div.className = `msg ${sender}`;
+            // Menambahkan class 'msg' DAN class pengirim ('user'/'bot')
+            div.classList.add('msg');
+            div.classList.add(sender); 
             div.textContent = text;
             chatMessages.appendChild(div);
-            
-            // Auto scroll ke bawah
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     </script>
