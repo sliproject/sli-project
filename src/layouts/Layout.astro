@@ -3,92 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLi Project | Your Digital Transformation Partner</title>
+    <title>SLi Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style is:global>
-        :root { 
-            --primary: #0284c7; 
-            --dark: #0f172a; 
-            --bg-light: #f8fafc;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        /* Layout Dasar */
-        body { background: #ffffff; color: var(--dark); line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        nav { padding: 20px 0; border-bottom: 1px solid #f1f5f9; background: white; position: sticky; top: 0; z-index: 1000; }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .text-logo { font-size: 26px; font-weight: 800; text-decoration: none; color: var(--dark); }
-        .text-logo span { color: var(--primary); }
-
-        /* --- BAGIAN CHATBOT FIX --- */
-        .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; border: none; padding: 16px 28px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 1001; }
-        
-        .chat-window { position: fixed; bottom: 100px; right: 30px; width: 380px; height: 520px; background: white; border-radius: 24px; display: none; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 1001; border: 1px solid #e2e8f0; overflow: hidden; }
-        .chat-window.show { display: flex !important; }
-        
-        .chat-header { background: var(--primary); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        
-        .chat-body { 
-            flex: 1 !important; 
-            padding: 20px !important; 
-            overflow-y: auto !important; 
-            background: #f8fafc !important; 
-            display: flex !important; 
-            flex-direction: column !important; 
-            gap: 12px !important; 
-        }
-
-        /* BUBBLE STYLE - Pakai !important karena Astro rewel */
-        .msg { 
+        /* CSS ini akan dipaksa ke semua pesan agar ukurannya normal */
+        .chat-body .msg { 
             padding: 12px 16px !important; 
             border-radius: 18px !important; 
-            font-size: 14px !important; 
-            line-height: 1.5 !important; 
-            max-width: 85% !important; 
+            font-size: 14px !important; /* Mengunci ukuran font agar tidak membesar */
+            line-height: 1.4 !important; 
+            max-width: 80% !important; 
             word-wrap: break-word !important;
+            margin-bottom: 10px !important;
             display: block !important;
             clear: both !important;
-            margin-bottom: 5px !important;
         }
 
-        /* Pesan User (Biru di Kanan) */
-        .msg.user { 
-            align-self: flex-end !important; 
+        /* Pesan User: Biru */
+        .chat-body .msg.user { 
             background-color: #0284c7 !important; 
-            color: #ffffff !important; 
-            border-bottom-right-radius: 4px !important; 
+            color: white !important; 
             float: right !important;
+            border-bottom-right-radius: 4px !important; 
         }
 
-        /* Pesan Bot (Abu-abu di Kiri) */
-        .msg.bot { 
-            align-self: flex-start !important; 
+        /* Pesan Bot: Abu-abu (Sama dengan sapaan awal) */
+        .chat-body .msg.bot { 
             background-color: #e2e8f0 !important; 
             color: #1e293b !important; 
-            border-bottom-left-radius: 4px !important; 
-            border: 1px solid #cbd5e1 !important;
             float: left !important;
+            border-bottom-left-radius: 4px !important; 
         }
-
-        .chat-footer { padding: 16px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; background: white; }
-        .chat-footer input { flex: 1; border: 1px solid #cbd5e1; padding: 12px; border-radius: 12px; outline: none; }
-        .chat-footer button { background: var(--primary); color: white; border: none; width: 45px; border-radius: 12px; cursor: pointer; }
-
-        @media (max-width: 480px) { .chat-window { width: 90%; right: 5%; } }
     </style>
 </head>
 <body>
-
-    <nav><div class="container nav-flex"><a href="#" class="text-logo">SLi <span>Project</span></a></div></nav>
-
     <div id="chat-container">
         <button id="chat-trigger" class="chat-btn">Chat AI</button>
         <div id="chat-window" class="chat-window">
             <div class="chat-header">
-                <div><strong>SLi Chatbot AI</strong><br><small>Online 24/7</small></div>
-                <button id="close-chat" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
+                <strong>SLi Chatbot AI</strong>
+                <button id="close-chat" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">&times;</button>
             </div>
             <div id="chat-messages" class="chat-body">
                 <div class="msg bot">Halo! Saya asisten AI SLi Project. Ada yang bisa saya bantu?</div>
@@ -101,17 +56,41 @@
     </div>
 
     <script is:inline>
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
         const chatTrigger = document.getElementById('chat-trigger');
         const chatWindow = document.getElementById('chat-window');
         const closeChat = document.getElementById('close-chat');
-        const chatForm = document.getElementById('chat-form');
-        const chatMessages = document.getElementById('chat-messages');
-        const userInput = document.getElementById('user-input');
 
         const sessionId = "sess_" + Math.random().toString(36).substring(7);
 
         chatTrigger.onclick = () => chatWindow.classList.toggle('show');
         closeChat.onclick = () => chatWindow.classList.remove('show');
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            
+            // TRIK RAHASIA: Ambil atribut 'data-astro' dari pesan bot pertama
+            const firstBotMsg = chatMessages.querySelector('.msg.bot');
+            if (firstBotMsg) {
+                // Cari atribut yang namanya diawali 'data-astro-cid'
+                const astroAttr = Array.from(firstBotMsg.attributes).find(attr => attr.name.startsWith('data-astro-cid'));
+                if (astroAttr) {
+                    div.setAttribute(astroAttr.name, astroAttr.value);
+                }
+            }
+
+            div.className = `msg ${sender}`;
+            div.textContent = text;
+            chatMessages.appendChild(div);
+
+            const spacer = document.createElement('div');
+            spacer.style.clear = 'both';
+            chatMessages.appendChild(spacer);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
         chatForm.onsubmit = async (e) => {
             e.preventDefault();
@@ -127,26 +106,12 @@
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ message: text, chatId: sessionId })
                 });
-                
                 const data = await response.json();
-                const botReply = data.reply || data.output || data.message || "Tim kami akan segera membalas!";
-                addMessage(botReply, 'bot');
-
+                addMessage(data.reply || data.output || "Maaf, tim kami akan segera membalas!", 'bot');
             } catch (err) {
-                addMessage("Maaf, koneksi bermasalah.", 'bot');
+                addMessage("Koneksi bermasalah.", 'bot');
             }
         };
-
-        function addMessage(text, sender) {
-            const div = document.createElement('div');
-            // Memberikan class murni agar terbaca oleh CSS is:global
-            div.className = `msg ${sender}`;
-            div.textContent = text;
-            chatMessages.appendChild(div);
-            
-            // Auto scroll
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
     </script>
 </body>
 </html>
